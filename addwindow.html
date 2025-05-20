@@ -21,7 +21,7 @@
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const itemName = document.getElementById('itemName').value;
-        ipcRenderer.send('add-item', itemName);
+        ipcRenderer.send('add:item', itemName);
         
         window.close();
     });

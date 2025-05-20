@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add shopping list item</title>
+</head>
+<body>
+    <form id="addItemForm">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" required autofocus>
+    
+        <button type="submit">Add Item</button>
+    </form>
+</body>
+<script>
+    const electron = require('electron');
+    const { ipcRenderer } = electron;
+
+    const form = document.getElementById('addItemForm');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const itemName = document.getElementById('itemName').value;
+        ipcRenderer.send('add-item', itemName);
+        
+        window.close();
+    });
+
+</script>
+</html>
